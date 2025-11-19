@@ -1,75 +1,125 @@
-# React + TypeScript + Vite
+# Insight Calendar - React Big Calendar with Bar Graph
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application featuring an interactive calendar with data visualization using bar graphs. Built with React, TypeScript, Redux, and Recharts.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive Calendar**: Month, week, and day views using React Big Calendar
+- **Data Visualization**: Bar graphs showing user data for selected dates
+- **Date Highlighting**: Visual indicators for dates containing data
+- **Selected Date Highlighting**: Clear indication of currently selected date
+- **Popup Modal**: Shows bar graph or "no data" alert for clicked dates
+- **Redux State Management**: Centralized state for calendar interactions
+- **Responsive Design**: Full-screen calendar layout
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19.2.0
+- TypeScript
+- Vite
+- Redux Toolkit
+- React Big Calendar
+- Recharts
+- Moment.js
 
-## Expanding the ESLint configuration
+## Installation & Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Steps to Run
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd insight-calender
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   - Navigate to `http://localhost:5173`
+   - The calendar will load in full-screen mode
+
+## Usage
+
+### Calendar Navigation
+- Use the toolbar to switch between Month, Week, and Day views
+- Navigate between months using the navigation arrows
+- Click on any date to select it
+
+### Data Interaction
+- **Dates with data** are highlighted in dark blue with white text
+- **Selected dates** are highlighted in orange-red
+- **Today's date** has a light green background
+
+### Popup Functionality
+- Click any date to open a popup modal
+- **Dates with data**: Shows a bar graph with user statistics
+- **Dates without data**: Shows a warning message with the selected date
+
+## Sample Data
+
+The application includes dummy data for the following dates in November 2025:
+- 01-11-2025, 02-11-2025, 03-11-2025, 04-11-2025
+- 15-11-2025, 20-11-2025, 25-11-2025
+
+Each date contains user data in the format:
+```json
+{
+  "01-11-2025": [
+    {"user_1": 1},
+    {"user_2": 2},
+    {"user_3": 3},
+    {"user_4": 4}
+  ]
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Scripts
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Project Structure
+
 ```
-# insight-calender
-# insight-calender
+src/
+├── components/
+│   ├── Calendar.tsx       # Main calendar component
+│   ├── Calendar.css       # Calendar styling
+│   ├── Popup.tsx         # Modal popup component
+│   └── Popup.css         # Popup styling
+├── data/
+│   └── dummyData.ts      # Sample calendar data
+├── store/
+│   ├── store.ts          # Redux store configuration
+│   └── calendarSlice.ts  # Calendar state management
+├── App.tsx               # Main app component
+└── main.tsx             # Application entry point
+```
+
+## Browser Compatibility
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+
+## Development Notes
+
+- The application uses Redux for state management
+- Calendar highlighting is handled through dayPropGetter
+- Bar graphs are rendered using Recharts library
+- Full responsive design with viewport-based sizing

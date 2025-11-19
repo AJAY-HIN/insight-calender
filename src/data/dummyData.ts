@@ -48,5 +48,11 @@ export const dummyCalendarData: CalendarData = {
     {"user_2": 5},
     {"user_3": 3},
     {"user_4": 7},
+  ],
+  "10-01-2025": [
+    {"user_1": 3},
+    {"user_2": 4},
+    {"user_3": 2},
+    {"user_4": 5},
   ]
 };

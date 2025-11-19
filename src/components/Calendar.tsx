@@ -71,8 +71,9 @@ const CalendarComponent = () => {
         dayPropGetter={dayPropGetter}
         onSelectSlot={handleSelectSlot}
         selectable={true}
-        views={['month', 'week', 'day']}
+        views={['month']}
         defaultView="month"
+        toolbar={false}
       />
     </div>
   );
