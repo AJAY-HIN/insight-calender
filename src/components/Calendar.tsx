@@ -31,8 +31,10 @@ const CalendarComponent = () => {
       return {
         className: 'selected-date',
         style: {
-          backgroundColor: '#ffeb3b',
-          border: '2px solid #ff9800'
+          backgroundColor: '#ff5722',
+          color: 'white',
+          border: '3px solid #d84315',
+          fontWeight: 'bold'
         }
       };
     }
@@ -41,8 +43,10 @@ const CalendarComponent = () => {
       return {
         className: 'has-data',
         style: {
-          backgroundColor: '#e3f2fd',
-          border: '2px solid #2196f3'
+          backgroundColor: '#1976d2',
+          color: 'white',
+          border: '2px solid #0d47a1',
+          fontWeight: 'bold'
         }
       };
     }
@@ -63,7 +67,7 @@ const CalendarComponent = () => {
         events={[]}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 600 }}
+        style={{ height: 'calc(100vh - 100px)' }}
         dayPropGetter={dayPropGetter}
         onSelectSlot={handleSelectSlot}
         selectable={true}
