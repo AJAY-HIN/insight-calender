@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { dummyCalendarData } from '../data/dummyData';
 import { setSelectedDate } from '../store/calendarSlice';
-import { RootState } from '../store/store';
+import type { RootState } from '../store/store';
 import './Calendar.css';
 
 const localizer = momentLocalizer(moment);
