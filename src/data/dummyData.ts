@@ -1,10 +1,10 @@
-export interface UserData {
+export type UserData = {
   [key: string]: number;
-}
+};
 
-export interface CalendarData {
+export type CalendarData = {
   [date: string]: UserData[];
-}
+};
 
 export const dummyCalendarData: CalendarData = {
   "01-11-2025": [

@@ -53,7 +53,7 @@ const CalendarComponent = () => {
     return {};
   };
 
-  const handleSelectSlot = (slotInfo: any) => {
+  const handleSelectSlot = (slotInfo: { start: Date }) => {
     const selectedDate = slotInfo.start;
     const dateKey = formatDateKey(selectedDate);
     dispatch(setSelectedDate(dateKey));

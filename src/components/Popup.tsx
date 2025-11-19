@@ -12,7 +12,7 @@ const Popup = () => {
   if (!showPopup) return null;
 
   const hasData = selectedDate && selectedDate in dummyCalendarData;
-  const chartData = hasData ? 
+  const chartData = hasData && selectedDate ? 
     dummyCalendarData[selectedDate].map(item => {
       const [user, value] = Object.entries(item)[0];
       return { user, value };
