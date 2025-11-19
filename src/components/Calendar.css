@@ -25,7 +25,13 @@
   color: #1976d2;
 }
 
-.rbc-selected {
+.selected-date {
+  background-color: #ffeb3b !important;
+  border: 2px solid #ff9800 !important;
+  border-radius: 4px;
+}
+
+.selected-date.has-data {
   background-color: #ffeb3b !important;
   border: 2px solid #ff9800 !important;
 }

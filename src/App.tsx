@@ -1,11 +1,17 @@
-import CalendarComponent from './components/Calendar'
-import './App.css'
+import { Provider } from 'react-redux';
+import { store } from './store/store';
+import CalendarComponent from './components/Calendar';
+import Popup from './components/Popup';
+import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <CalendarComponent />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <CalendarComponent />
+        <Popup />
+      </div>
+    </Provider>
   )
 }
 

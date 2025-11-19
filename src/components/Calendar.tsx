@@ -1,12 +1,18 @@
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
+import { useSelector, useDispatch } from 'react-redux';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { dummyCalendarData } from '../data/dummyData';
+import { setSelectedDate } from '../store/calendarSlice';
+import { RootState } from '../store/store';
 import './Calendar.css';
 
 const localizer = momentLocalizer(moment);
 
 const CalendarComponent = () => {
+  const dispatch = useDispatch();
+  const { selectedDate } = useSelector((state: RootState) => state.calendar);
+
   const formatDateKey = (date: Date): string => {
     return moment(date).format('DD-MM-YYYY');
   };
@@ -17,7 +23,21 @@ const CalendarComponent = () => {
   };
 
   const dayPropGetter = (date: Date) => {
-    if (hasDataForDate(date)) {
+    const dateKey = formatDateKey(date);
+    const isSelected = selectedDate === dateKey;
+    const hasData = hasDataForDate(date);
+
+    if (isSelected) {
+      return {
+        className: 'selected-date',
+        style: {
+          backgroundColor: '#ffeb3b',
+          border: '2px solid #ff9800'
+        }
+      };
+    }
+    
+    if (hasData) {
       return {
         className: 'has-data',
         style: {
@@ -32,12 +52,7 @@ const CalendarComponent = () => {
   const handleSelectSlot = (slotInfo: any) => {
     const selectedDate = slotInfo.start;
     const dateKey = formatDateKey(selectedDate);
-    
-    if (hasDataForDate(selectedDate)) {
-      console.log('Data for', dateKey, ':', dummyCalendarData[dateKey]);
-    } else {
-      console.log('No data found for', dateKey);
-    }
+    dispatch(setSelectedDate(dateKey));
   };
 
   return (
